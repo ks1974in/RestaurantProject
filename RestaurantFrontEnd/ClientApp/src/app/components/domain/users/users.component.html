@@ -1,0 +1,92 @@
+<h1>Users </h1>
+
+
+<table id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover form-control-sm"></table>
+
+<form #form="ngForm">
+  <div class="form-group">
+    <fieldset [disabled]="formState.isDisabled">
+
+      <legend>User</legend>
+
+
+      <div>
+        <label class="form-control" for="selRole">Role</label>
+        <select name="selRole" [(ngModel)]="currentUser.Role" #role="ngModel" [compareWith]="compareFn" class="form-control form-control-sm" required>
+          <option *ngFor="let role of roles" [(ngValue)]="role">{{role.Name}}</option>
+        </select>
+      </div>
+
+
+      <div>
+        <label  class="form-control" for="txtUserName">User Name</label>
+        <input type="text" name="txtUserName" [(ngModel)]="currentUser.UserName" #userName="ngModel" class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && userName.invalid" class="error">
+          <div *ngIf="formState.submitted && userName.invalid"><small class="form-text text-muted">The username is required</small></div>
+        </div>
+      </div>
+
+      <div>
+        <label  class="form-control" for="txtFirstName">First Name</label>
+        <input type="text" name="txtFirstName" [(ngModel)]="currentUser.FirstName" #firstName="ngModel" class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && firstName.invalid" class="error">
+          <div *ngIf="formState.submitted && firstName.invalid"><small class="form-text text-muted">The first name is required</small></div>
+        </div>
+      </div>
+      <div>
+        <label  class="form-control" for="txtFirstName">Last Name</label>
+        <input type="text" name="txtFirstName" [(ngModel)]="currentUser.LastName" #lastName="ngModel" class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && lastName.invalid" class="error">
+          <div *ngIf="formState.submitted && lastName.invalid"><small class="form-text text-muted">The last name is required</small></div>
+        </div>
+      </div>
+      <div>
+        <label class="form-control" for="txtEmailAddress">Email Address</label>
+        <input type="email" name="txtEmailAddress" [(ngModel)]="currentUser.EmailAddress" #emailAddress="ngModel" class="form-control form-control-sm" [email]="true" required />
+        <div *ngIf="formState.submitted && emailAddress.invalid" class="error">
+          <div *ngIf="formState.submitted && emailAddress.invalid"><small class="form-text text-muted">The email address is required, and must be formatted as a valid email address</small></div>
+        </div>
+      </div>
+      <div>
+        <label class="form-control" for="txtMobileNumber">Mobile Number</label>
+        <input type="text" name="txtMobileNumber" [(ngModel)]="currentUser.MobileNumber" #mobileNumber="ngModel" class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && mobileNumber.invalid" class="error">
+          <div *ngIf="formState.submitted && mobileNumber.invalid"><small class="form-text text-muted">The name is required</small></div>
+        </div>
+      </div>
+
+      <div>
+        <label  class="form-control" for="txtPassword">Password</label>
+        <input type="password" name="txtPassword" [(ngModel)]="currentUser.Password" #password="ngModel" class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && password.invalid" class="error">
+          <div *ngIf="formState.submitted && password.invalid"><small class="form-text text-muted">A password is required</small></div>
+        </div>
+      </div>
+
+      <div>
+        <label class="form-control" for="chkEnabled">Enabled</label>
+        <input type="checkbox" name="chkEnabled" [(ngModel)]="currentUser.Enabled" #enabled="ngModel" class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && enabled.invalid" class="error">
+          <div *ngIf="formState.submitted && enabled.invalid"><small class="form-text text-muted">The enabled status is required</small></div>
+        </div>
+      </div>
+
+      <div>
+        <label  class="form-control" for="chkLocked">Locked</label>
+        <input type="checkbox" name="chkLocked" [(ngModel)]="currentUser.Locked" #locked="ngModel" class="form-control form-control-sm"  />
+        <div *ngIf="formState.submitted && locked.invalid" class="error">
+          <div *ngIf="formState.submitted && locked.invalid"><small class="form-text text-muted">The locked status is required</small></div>
+        </div>
+      </div>
+
+    </fieldset>
+    <table>
+      <tr>
+        <td><input type="button" [disabled]="formState.newButtonDisabled" (click)="onCreate()" value="New" [class]="formState.newButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.saveButtonDisabled" (click)="onSubmit(form)" value="Save" [class]="formState.saveButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.cancelButtonDisabled" (click)="onCancel(form)" value="Cancel" [class]="formState.cancelButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+      </tr>
+    </table>
+    </div>
+</form>
+

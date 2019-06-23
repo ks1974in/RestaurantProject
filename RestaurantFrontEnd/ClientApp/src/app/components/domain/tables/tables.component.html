@@ -1,0 +1,49 @@
+<h1>Tables</h1>
+
+
+<table id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover form-control-sm"></table>
+
+<form #form="ngForm">
+  <div class="form-group">
+    <fieldset [disabled]="formState.isDisabled">
+
+      <legend>Table</legend>
+
+      <div>
+        <label class="form-control form-control-sm">Number:</label>
+        <input type="text" name="txtNumber" [(ngModel)]="currentTable.Number" #number="ngModel" class="form-control form-control-sm" required>
+
+        <div *ngIf="formState.submitted && number.invalid" class="error">
+          <div *ngIf="formState.submitted && number.invalid"><small class="form-text text-muted">The Table Number is required</small></div>
+        </div>
+
+      </div>
+
+      <div>
+        <label class="form-control form-control-sm">Seating Capacity:</label>
+        <input type="number" name="txtSeatingCapacity" [(ngModel)]="currentTable.SeatingCapacity" class="form-control form-control-sm" #seatingCapacity="ngModel" required>
+
+        <div *ngIf="formState.submitted && seatingCapacity.invalid" class="error">
+          <div *ngIf="formState.submitted && seatingCapacity.invalid"><small class="form-text text-muted">The Seating Capacity is required</small></div>
+        </div>
+
+      </div>
+
+
+      <div class="form-control form-control-sm">
+        <label for="chkOccupied">Occupied</label>
+        <input type="checkbox" name="chkOccupied" [(ngModel)]="currentTable.Occupied" class="form-control form-control-sm" #occupied="ngModel" />
+      </div>
+
+
+
+    </fieldset>
+    <table>
+      <tr>
+        <td><input type="button" [disabled]="formState.newButtonDisabled" (click)="onCreate()" value="New" [class]="formState.newButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.saveButtonDisabled" (click)="onSubmit(form)" value="Save" [class]="formState.saveButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.cancelButtonDisabled" (click)="onCancel(form)" value="Cancel" [class]="formState.cancelButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+      </tr>
+    </table>
+    </div>
+</form>

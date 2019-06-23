@@ -1,0 +1,59 @@
+<div class="btn-container">
+
+
+  <table>
+    <tr *ngFor="let row of categoryArray">
+      <td *ngFor="let category of row">
+        <input type="button" class="rect-btn-category" id="category" attr.categoryId={{category?.Id}} value={{category?.Name}} />
+      </td>
+    </tr>
+  </table>
+
+  <table>
+    <tr *ngFor="let row of itemArray">
+      <td *ngFor="let item of row">
+        <div>
+          <input type="button" class="square-btn" id="item" attr.itemId={{item?.Id}} value={{item?.Name}} />
+          <input type="button" class="rect-btn-item" id="item" attr.itemId={{item?.Id}} value="Rs.{{item?.Price}}" />
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <form #form="ngForm">
+    <div class="form-group">
+      <fieldset [disabled]="formState.isDisabled">
+        <legend>Edit Order</legend>
+        <div>
+          <label class="form-control form-control-sm" for="txtPrice">Price</label>
+          <input type="number" name="txtPrice" [ngModel]="currentItem && currentItem.Price" #price="ngModel" (input)="computeSubtotal()" class="form-control form-control-sm" readonly />
+        </div>
+
+        <div>
+          <label class="form-control form-control-sm" for="txtQuantity">Quantity</label>
+          <input type="number" name="txtQuantity" [(ngModel)]="currentItem && currentItem.Quantity" #quantity="ngModel" (input)="computeSubtotal()" class="form-control form-control-sm" required />
+          <div *ngIf="formState.submitted && quantity.invalid" class="error">
+            <div *ngIf="formState.submitted && quantity.invalid"><small class="form-text text-muted">The quantity is required</small></div>
+          </div>
+        </div>
+        <div>
+          <label class="form-control form-control-sm" for="txtSubtotal">Subtotal</label>
+          <input type="number" name="txtSubtotal" [ngModel]="currentItem && currentItem.Subtotal" #subtotal="ngModel" class="form-control form-control-sm" readonly />
+        </div>
+        <div>
+          <label for="taRemarks" class="form-control form-control-sm">Remarks</label>
+          <textarea name="taRemarks" [(ngModel)]="currentItem && currentItem.Remarks" #remarks="ngModel" class="form-control form-control-sm" required></textarea>
+        </div>
+      </fieldset>
+    </div>
+    <table>
+      <tr>
+        <td><input type="button" (click)="onAdd()" value="Add Item" [class]="formState.saveButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" (click)="onCancel()" value="Cancel" [class]="formState.cancelButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm">
+        <td><input type="button" (click)="onBack()" value="Back" [class]="formState.saveButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+      </tr>
+    </table>
+
+  </form>
+
+    </div>

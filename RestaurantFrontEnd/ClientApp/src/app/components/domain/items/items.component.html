@@ -1,0 +1,78 @@
+<h1>Items </h1>
+
+
+<table id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover form-control-sm"></table>
+
+<form #form="ngForm">
+  <div class="form-group">
+    <fieldset [disabled]="formState.isDisabled">
+
+    <legend>Item</legend>
+
+
+      <div>
+        <label class="form-control form-control-sm" for="selCategory">Category</label>
+        <select name="selCategory" [(ngModel)]="currentItem.Category" #category="ngModel" [compareWith]="compareFn" class="form-control form-control-sm" required>
+          <option *ngFor="let category of categories" [(ngValue)]="category">{{category.Name}}</option>
+        </select>
+      </div>
+
+
+      <div>
+        <label class="form-control form-control-sm" for="selUnit">Unit</label>
+        <select name="selUnit" [(ngModel)]="currentItem.Unit" #unit="ngModel" [compareWith]="compareFn" class="form-control form-control-sm" required>
+          <option *ngFor="let unit of units" [(ngValue)]="unit">{{unit.Name}}</option>
+        </select>
+      </div>
+
+
+      <div>
+        <label class="form-control form-control-sm" for="txtName">Name</label>
+        <input type="text" name="txtName" [(ngModel)]="currentItem.Name" #name="ngModel" class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && name.invalid" class="error">
+          <div *ngIf="formState.submitted && name.invalid"><small class="form-text text-muted">The name is required</small></div>
+        </div>
+        </div>
+     
+
+      <div>
+        <label class="form-control form-control-sm" for="txtCode">Code:</label>
+        <input type="text" name="txtCode" [(ngModel)]="currentItem.Code" #code="ngModel"class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && code.invalid" class="error">
+          <div *ngIf="formState.submitted && code.invalid"><small class="form-text text-muted">The code is required</small></div>
+        </div>
+        </div>
+     
+      <div>
+        <label class="form-control form-control-sm" for="txtPrice">Price</label>
+        <input type="number" name="txtPrice" [(ngModel)]="currentItem.Price" #price="ngModel" class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && price.invalid" class="error">
+          <div *ngIf="formState.submitted && price.invalid"><small class="form-text text-muted">The price is required</small></div>
+        </div>
+        </div>
+    
+
+      <div>
+        <label class="form-control form-control-sm" for="chkAvailable">Available</label>
+        <input type="checkbox" name="chkAvailable" [(ngModel)]="currentItem.Available" #available="ngModel" class="form-control form-control-sm" required />
+        <div *ngIf="formState.submitted && available.invalid" class="error">
+          <div *ngIf="formState.submitted && available.invalid"><small class="form-text text-muted">The availibility is required</small></div>
+        </div>
+        </div>
+    
+
+      <div>
+        <label class="form-control form-control-sm">Description:</label>
+        <textarea name="taDescription" [(ngModel)]="currentItem.Description" #description="ngModel" class="form-control form-control-sm" ></textarea>
+      </div>
+
+    </fieldset>
+    <table>
+      <tr>
+        <td><input type="button" [disabled]="formState.newButtonDisabled" (click)="onCreate()" value="New" [class]="formState.newButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.saveButtonDisabled" (click)="onSubmit(form)" value="Save" [class]="formState.saveButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.cancelButtonDisabled" (click)="onCancel(form)" value="Cancel" [class]="formState.cancelButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+      </tr>
+    </table>
+    </div>
+</form>

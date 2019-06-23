@@ -1,0 +1,33 @@
+<h1>Waiters and Tables Association </h1>
+<form #form="ngForm">
+  <div class="form-group">
+    <fieldset [disabled]="formState.isDisabled">
+      <legend>Waiters and Tables Assignment</legend>
+      <div>
+        <label class="form-control form-control-sm" for="selWaiter">Waiter</label>
+        <select name="selWaiter" [(ngModel)]="currentWaiter" [compareWith]="compareFn" (change)="selectedWaiterChanged()" class="form-control form-control-sm">
+          <option selected>Select Waiter</option>
+          <option *ngFor="let waiter of waiters" [(ngValue)]="waiter">{{waiter.FirstName}} {{waiter.LastName}}</option>
+        </select>
+      </div>
+
+
+      <div>
+        <label  class="form-control form-control-sm" for="txtSelectedTables">Selected Tables</label>
+        <input type="text" name="txtSelectedSelectedTables" [ngModel]="listSelectedTables()" class="form-control form-control-sm" readonly>
+      </div>
+    </fieldset>
+
+    <div>
+      <table id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover form-control-sm"></table>
+    </div>
+    <table>
+      <tr>
+        <td><input type="button" [disabled]="formState.editButtonDisabled" (click)="onEdit()" value="Edit" [class]="formState.editButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.saveButtonDisabled" (click)="onSubmit(form)" value="Save" [class]="formState.saveButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.cancelButtonDisabled" (click)="onCancel(form)" value="Cancel" [class]="formState.cancelButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+      </tr>
+    </table>
+    </div>
+</form>
+

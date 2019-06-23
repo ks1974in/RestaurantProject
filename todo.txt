@@ -1,0 +1,8 @@
+Cancel
+Ask before delete -done
+Edit updates
+done color of buttons
+Reset form after save -done
+done change text buttons to delete and edit icons -done
+if in edit or create, ask if you want to navigate away -done
+

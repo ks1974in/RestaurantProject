@@ -1,0 +1,8 @@
+{  
+   "DatabaseConfig":{  
+      "Server":"EC2AMAZ-NF2QFPG\\SQLEXPRESS",
+      "Database":"RestaurantDB",
+      "UserId":"sa",
+      "Password":"cloud1974!"
+   }
+}

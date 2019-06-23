@@ -1,0 +1,168 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+
+
+
+
+body, html {
+  height: 100%;
+  margin: 0 auto;
+}
+
+body {
+  font-family: 'Montserrat';
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+
+}
+
+  .container a {
+    color: white;
+  }
+
+section {
+  width: 100%;
+  
+}
+
+.disabled
+{
+
+color:black;
+
+}
+
+
+
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+
+.action-button-disabled {
+  color: white;
+  background-color: #C5C5C5;
+  
+}
+
+.action-button {
+  color: white;
+  background-color: #999;
+}
+
+  .action-button:hover {
+    background-color: #666;
+    color: white;
+  }
+
+
+
+.btn-container {
+  border: none;
+  background-color: inherit;
+  padding: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+ 
+}
+
+.square-btn {
+  
+  width:150px;
+  height:150px;
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 10px;
+  cursor: pointer;
+  display: inline-block;
+  background-color:cornflowerblue;
+  color:white;
+}
+
+.square-btn:hover {
+  background-color: mediumvioletred;
+  color: white;
+}
+
+.rect-btn-category {
+  text-align:center;
+  width: 150px;
+  height: 90px;
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  
+  background-color: darkblue;
+  color: white;
+}
+
+.rect-btn-item {
+  width: 150px;
+  height: 50px;
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  background-color: darkviolet;
+  color: white;
+}
+
+.rect-btn {
+  width: 150px;
+  height: 50px;
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  
+}
+
+
+
+  .square-btn:hover {
+    background-color: mediumvioletred;
+    color: white;
+  }
+
+.rect-btn:hover {
+  background-color: mediumvioletred;
+  color: white;
+}

@@ -1,0 +1,39 @@
+<div>
+  <h1>View Ordered Items</h1>
+
+  <table id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover form-control-sm"></table>
+  <fieldset>
+    <legend>View Ordered Items</legend>
+    <div>
+      <label class="form-control form-control-sm" for="txtOrderNumber">OrderNumber</label>
+      <input type="number" name="txtOrderNumber" [(ngModel)]="currentOrder && currentOrder.OrderNumber" #price="ngModel" class="form-control form-control-sm" readonly required />
+    </div>
+    <div>
+      <label class="form-control form-control-sm" for="txtOrderDate">OrderDate</label>
+      <input type="date" name="txtOrderDate" [(ngModel)]="currentOrder && NgDate.dateInput" #date="ngModel" class="form-control form-control-sm" readonly required />
+    </div>
+
+
+    <div>
+      <label class="form-control form-control-sm" for="txtTable">Table</label>
+      <input type="text" name="txtTable" [(ngModel)]="currentOrder && currentOrder.Table.Number" #table="ngModel" class="form-control form-control-sm" readonly required />
+    </div>
+
+
+    <div>
+      <label class="form-control form-control-sm" for="txtWaiter">Waiter</label>
+      <input type="text" name="txtWaiter" [(ngModel)]="currentOrder && currentOrder.Waiter.Name" #waiter="ngModel" class="form-control form-control-sm" readonly required />
+    </div>
+
+    <div>
+      <label class="form-control form-control-sm" for="txtTotal">Total</label>
+      <input type="number" name="txtTotal" [(ngModel)]="currentOrder && currentOrder.Total" #total="ngModel" class="form-control form-control-sm" readonly />
+    </div>
+  </fieldset>
+    <table>
+      <tr>
+        <td><input type="button" (click)="onBack()" value="Back" [class]="formState.newButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" (click)="onEdit()" value="Edit" [class]="formState.newButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+      <tr>
+    </table>
+</div>

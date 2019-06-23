@@ -1,0 +1,86 @@
+<h1>Orders </h1>
+
+<form #form="ngForm">
+  <div class="form-group">
+    <fieldset [disabled]="formState.isDisabled">
+
+      <legend>Order</legend>
+      <div>
+        <label class="form-control form-control-sm" for="txtOrderNumber">OrderNumber</label>
+        <input type="number" name="txtOrderNumber" [(ngModel)]="currentOrder && currentOrder.OrderNumber" #price="ngModel" class="form-control form-control-sm" readonly required />
+      </div>
+      <div>
+        <label class="form-control form-control-sm" for="txtOrderDate">OrderDate</label>
+        <input type="date" name="txtOrderDate" [(ngModel)]="currentOrder && NgDate.dateInput" #date="ngModel" class="form-control form-control-sm" readonly required />
+      </div>
+
+
+      <div>
+        <label class="form-control form-control-sm" for="selTable">Table</label>
+        <select name="selTable" [(ngModel)]="currentOrder && currentOrder.Table" #table="ngModel" [compareWith]="compareFn" (change)="getWaiters()" class="form-control form-control-sm" required>
+          <option selected>Select Table</option>
+          <option *ngFor="let table of tables" [(ngValue)]="table">{{table.Number}}</option>
+        </select>
+      </div>
+
+
+
+      <div>
+        <label class="form-control form-control-sm" for="selWaiter">Waiters</label>
+        <select name="selWaiter" [(ngModel)]="currentOrder && currentOrder.Waiter" #waiter="ngModel" [compareWith]="compareFn" class="form-control form-control-sm" required>
+          <option selected>Select Waiter</option>
+          <option *ngFor="let waiter of waiters" [(ngValue)]="waiter">{{waiter.FirstName+' '+waiter.LastName}}</option>
+        </select>
+      </div>
+
+
+      <div>
+        <label class="form-control form-control-sm" for="txtAmount">Amount</label>
+        <input type="text" name="txtAmount" [(ngModel)]="currentOrder && currentOrder.Amount" #name="ngModel" class="form-control form-control-sm" readonly />
+      </div>
+
+      <div>
+        <label class="form-control form-control-sm" for="txtTaxes">Taxes</label>
+        <input type="text" name="txtTaxes" [(ngModel)]="currentOrder && currentOrder.Taxes" #code="ngModel" class="form-control form-control-sm" />
+      </div>
+
+      <div>
+        <label class="form-control form-control-sm" for="txtSubtotal">Subtotal</label>
+        <input type="number" name="txtSubtotal" [(ngModel)]="currentOrder && currentOrder.Subtotal" #price="ngModel" class="form-control form-control-sm" readonly />
+      </div>
+
+
+      <div>
+        <label class="form-control form-control-sm" for="txtDiscount">Discount</label>
+        <input type="number" name="txtDiscount" [(ngModel)]="currentOrder && currentOrder.Discount" #discount="ngModel" class="form-control form-control-sm" />
+      </div>
+
+
+      <div>
+        <label class="form-control form-control-sm" for="txtTotal">Total</label>
+        <input type="number" name="txtTotal" [(ngModel)]="currentOrder && currentOrder.Total" #total="ngModel" class="form-control form-control-sm" />
+      </div>
+
+      <div>
+        <label class="form-control form-control-sm" for="taRemarks">Remarks</label>
+        <textarea name="txtTotal" [(ngModel)]="currentOrder && currentOrder.Remarks" #remarks="ngModel" class="form-control form-control-sm"></textarea>
+      </div>
+
+
+
+
+    </fieldset>
+
+
+
+    <table id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover"></table>
+
+    <table>
+      <tr>
+        <td><input type="button" [disabled]="formState.newButtonDisabled" (click)="onCreate()" value="New" [class]="formState.newButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.saveButtonDisabled" (click)="onSubmit(form)" value="Save" [class]="formState.saveButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+        <td><input type="button" [disabled]="formState.cancelButtonDisabled" (click)="onCancel(form)" value="Cancel" [class]="formState.cancelButtonDisabled?formState.disabledActionButtonClass:formState.actionButtonClass" class="form-control form-control-sm"></td>
+      </tr>
+    </table>
+    </div>
+</form>

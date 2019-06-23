@@ -1,0 +1,31 @@
+<div cdlass="btn-container">
+  <table>
+    <tr>
+      <td><div class="rect-btn-category">Table No.</div></td>
+      <td *ngFor="let i of categories">
+        <div class="rect-btn-category" id="category">
+          <p>{{i?.split('\n')[0]}}</p>
+          <p>{{i?.split('\n')[1]}}</p>
+        </div>
+      </td>
+      <td><div class="rect-btn-category">Time</div></td>
+    </tr>
+  </table>
+
+  <table>
+   
+    <tr *ngFor="let row of screenData">
+      <td *ngFor="let i of row">
+        <div>
+          <div class="square-btn">
+            <p>{{i?.split('\n')[0]}}</p>
+            <p>{{i?.split('\n')[1]}}</p>
+            <p>{{i?.split('\n')[2]}}</p>
+            <p>{{i?.split('\n')[3]}}</p>
+          </div>
+        </div>
+
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,8 @@
+{  
+   "DatabaseConfig":{  
+      "Server":"Thrint\\SqlExpress",
+      "Database":"RestaurantDB",
+      "UserId":"sa",
+      "Password":"cloud1974!"
+   }
+}
